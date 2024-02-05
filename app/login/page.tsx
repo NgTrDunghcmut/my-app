@@ -1,12 +1,5 @@
-import Test from "../components/comp";
-
-
 const Login = () => {
-    return (
-        <>
-        <Test />
-        </>
-    )
-}
+  return <></>;
+};
 
 export default Login;
