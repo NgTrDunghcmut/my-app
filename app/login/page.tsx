@@ -1,11 +1,5 @@
-
-
 const Login = () => {
-    return (
-        <>
-        Login
-        </>
-    )
-}
+  return <></>;
+};
 
 export default Login;
