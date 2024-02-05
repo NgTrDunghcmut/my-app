@@ -1,9 +1,10 @@
+import Test from "../components/comp";
 
 
 const Login = () => {
     return (
         <>
-        Login
+        <Test />
         </>
     )
 }
