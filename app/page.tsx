@@ -2,19 +2,13 @@ import Toolbars from "./components/toolbar";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
+import Login from "./login/page";
+import MainLayout from "./components/MainLayout";
 
 export default function Home() {
   return (
-    <main className=" min-h-screen flex-col items-center justify-between">
-      <Header />
-      <div>
-        <div className="flex">
-          <Sidebar />
-        </div>
-      </div>
-      {/* <div><Toolbars /></div> */}
-    </main>
+    <>
+      <MainLayout>Home page</MainLayout>
+    </>
   );
 }
