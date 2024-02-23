@@ -21,36 +21,36 @@ const Type1 = () => {
       console.log("1");
     };
     getDataChart();
-    const dataset: any = response?.data.map((item: any) => {
-      timeline.push(item.time);
-      x.push(item.x);
-      y.push(item.y);
-      z.push(item.z);
-      return {
-        timeline,
-        x,
-        y,
-        z,
-      };
-    });
+    // const dataset: any = response?.data.map((item: any) => {
+    //   timeline.push(item.time);
+    //   x.push(item.x);
+    //   y.push(item.y);
+    //   z.push(item.z);
+    //   return {
+    //     timeline,
+    //     x,
+    //     y,
+    //     z,
+    //   };
+    // });
     // if (c < 1) c = c + 1;
     console.log(response);
   }, []);
 
   // useEffect(() => {
-  //   const dataset: any = response?.data.map((item: any) => {
-  //     timeline.push(item.time);
-  //     x.push(item.x);
-  //     y.push(item.y);
-  //     z.push(item.z);
-  //     return {
-  //       timeline,
-  //       x,
-  //       y,
-  //       z,
-  //     };
-  //   });
-  //   //dataset;
+  const dataset = response?.data.map((item: any) => {
+    timeline.push(item.time);
+    x.push(item.x);
+    y.push(item.y);
+    z.push(item.z);
+    return {
+      timeline,
+      x,
+      y,
+      z,
+    };
+  });
+  dataset;
   // }, [c]);
   console.log(x);
   const chartdata = {
