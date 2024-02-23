@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import Chart from "./Chart";
+import Downloadbutton from "./DownloadButton";
 const tabs = [
   {
     title: "Training histogram",
@@ -43,13 +44,14 @@ const MainView = () => {
           })}
         </ul>
       </div>
-      {active === 0 && (
+      {active === 0 && <>{/* <Chart /> */}</>}
+      {active === 1 && <>show info</>}
+      {active === 2 && (
         <>
-          <Chart />
+          <Downloadbutton />
+          {/* <Chart /> */}
         </>
       )}
-      {active === 1 && <>component 2</>}
-      {active === 2 && <>component 3</>}
     </div>
   );
 };

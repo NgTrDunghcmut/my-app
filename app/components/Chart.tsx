@@ -1,69 +1,49 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import React from "react";
 import {
-  ChartComponent,
-  SeriesCollectionDirective,
-  SeriesDirective,
-  Inject,
-  Legend,
-  Category,
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
   Tooltip,
-  DataLabel,
-  LineSeries,
-  ILoadedEventArgs,
-} from "@syncfusion/ej2-react-charts";
-import { getElement } from "@syncfusion/ej2-charts";
-function Chart() {
-  var chart: any;
-  var intervalId: any;
-  var series1: any = [];
-  var value = 10;
-  var setTimeoutValue = 100;
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
-  for (var i = 0; i < 50; i++) {
-    if (Math.random() > 0.5) {
-      value += Math.random() * 2.0;
-    }
-    series1[i] = { x: i, y: value };
-  }
-  chart = chart;
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-  function loaded(args: any) {
-    intervalId = setTimeout(() => {
-      if (chart === null) {
-        clearInterval(intervalId);
-      } else {
-        if (Math.random() > 0.5) {
-          value += Math.random() * 2.0;
-        }
-        i++;
-        series1.push({ x: i, y: value });
-        series1.shift();
-        args.chart.series[0].dataSource = series1;
-      }
-    }, setTimeoutValue);
-  }
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top" as const,
+    },
+    title: {
+      display: true,
+      text: "DATA display",
+    },
+  },
+};
 
+function Chart(chartdata: any) {
   return (
-    <ChartComponent id="charts" loaded={loaded.bind(this)}>
-      <Inject services={[LineSeries]} />
-      <SeriesCollectionDirective>
-        <SeriesDirective
-          dataSource={series1}
-          xName="x"
-          yName="y"
-          type="Line"
-        ></SeriesDirective>
-      </SeriesCollectionDirective>
-    </ChartComponent>
+    <Line options={options} data={chartdata}>
+      <>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <div id="root" />
+      </>
+    </Line>
   );
 }
+
 export default Chart;
-ReactDOM.render(<Chart />, document.getElementById("charts"));
-// const Chart = ({ data, type }: { data: any; type?: string }) => {
-//   console.log("data", data);
-
-//   return <>chart</>;
-// };
-
-// export default Chart;

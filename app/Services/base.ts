@@ -11,7 +11,7 @@ baseRequest.interceptors.request.use(
 		const config = {
 			headers: {
 				Accept: 'application/json',
-				'Content-Type': 'application/json;charset=utf-8',
+				'Content-Type': 'application/json; charset=utf-8',
 				Authorization: `Bearer`,
 				//	Authorization: `123456789bearer fsdgfsd`,
 				'X-Requested-With': 'XMLHttpRequest',
@@ -27,6 +27,7 @@ baseRequest.interceptors.request.use(
 	},
 	function (error) {
 		// Do something with request error
+		console.log("Error:", error?.message)
 		return Promise.reject(error);
 	}
 );
@@ -34,6 +35,7 @@ baseRequest.interceptors.request.use(
 // Add a response interceptor
 baseRequest.interceptors.response.use(
 	(response) => {
+		console.log(response.data)
 		return response
 	},
 	(error) => {
