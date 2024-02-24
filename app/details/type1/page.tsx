@@ -5,57 +5,48 @@ import { useState, useEffect } from "react";
 import { downloadcsv, getData, getData2 } from "@/app/Services";
 //import { Anybody } from "next/font/google";
 import { AxiosResponse, all } from "axios";
-import Chart from "@/app/components/Chart";
+import MyChart from "@/app/components/Chart";
+import { time } from "console";
 //import Downloadbutton from "@/app/components/DownloadButton";
 var c: number = 0;
+
 const timeline: any = [];
 const x: any = [];
 const y: any = [];
 const z: any = [];
 const Type1 = () => {
-  const [response, setData] = useState<any>(null);
+  const [response, setData] = useState([]);
+  // const [ready, setDataready] = useState(false);
   useEffect(() => {
     const getDataChart = async () => {
       const res = await getData2(); //getData2 là lấy data thôi
-      setData(res);
-      console.log("1");
+      setData(res.data);
+      console.log(res.data);
     };
     getDataChart();
-    // const dataset: any = response?.data.map((item: any) => {
-    //   timeline.push(item.time);
-    //   x.push(item.x);
-    //   y.push(item.y);
-    //   z.push(item.z);
-    //   return {
-    //     timeline,
-    //     x,
-    //     y,
-    //     z,
-    //   };
-    // });
-    // if (c < 1) c = c + 1;
-    console.log(response);
+    if (c < 1) c = c + 1;
   }, []);
-
-  // useEffect(() => {
-  const dataset = response?.data.map((item: any) => {
-    timeline.push(item.time);
-    x.push(item.x);
-    y.push(item.y);
-    z.push(item.z);
-    return {
-      timeline,
-      x,
-      y,
-      z,
-    };
-  });
-  dataset;
-  // }, [c]);
+  // console.log(response);
+  useEffect(() => {
+    const dataset = response?.map((item) => {
+      timeline.push(item.time);
+      x.push(item.x);
+      y.push(item.y);
+      z.push(item.z);
+      return {
+        timeline,
+        x,
+        y,
+        z,
+      };
+    });
+    // dataset;
+  }, [c]);
   console.log(x);
+  const labels = timeline;
   const chartdata = {
-    timeline,
-    dataset: [
+    labels,
+    datasets: [
       {
         label: "X",
         data: x,
@@ -76,13 +67,15 @@ const Type1 = () => {
       },
     ],
   };
-  console.log("do dai", timeline.lenght);
-  // console.log(dataset.item.time);
+
+  console.log(chartdata);
   return (
     <>
       <MainLayout>
         <MainView />
-        {/* <Chart chartdata={chartdata} /> */}
+        <div className="App">
+          <MyChart chartData={chartdata} />
+        </div>
       </MainLayout>
     </>
   );
