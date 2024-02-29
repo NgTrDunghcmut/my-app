@@ -42,7 +42,7 @@ const Type1 = () => {
     });
     // dataset;
   }, [c]);
-  console.log(x);
+  // consoe.log(x);
   const labels = timeline;
   const chartdata = {
     labels,
@@ -68,7 +68,7 @@ const Type1 = () => {
     ],
   };
 
-  console.log(chartdata);
+  //console.log(chartdata);
   return (
     <>
       <MainLayout>

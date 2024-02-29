@@ -49,7 +49,7 @@ const MainView = () => {
       {active === 2 && (
         <>
           <Downloadbutton />
-          {/* <Chart /> */}
+          {/* {display} */}
         </>
       )}
     </div>

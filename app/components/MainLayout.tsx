@@ -1,5 +1,5 @@
 "use client";
-import Toolbars from "./components/toolbar";
+// import Toolbars from "./components/toolbar";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
@@ -19,6 +19,7 @@ export default function MainLayout({
         <div className="flex col-span-1">
           <Sidebar />
         </div>
+
         <div className="col-span-3 pr-16">{children}</div>
       </div>
     </main>
