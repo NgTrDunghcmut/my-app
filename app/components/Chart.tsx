@@ -1,69 +1,132 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import React, { useEffect, useState } from "react";
 import {
-  ChartComponent,
-  SeriesCollectionDirective,
-  SeriesDirective,
-  Inject,
-  Legend,
-  Category,
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
   Tooltip,
-  DataLabel,
-  LineSeries,
-  ILoadedEventArgs,
-} from "@syncfusion/ej2-react-charts";
-import { getElement } from "@syncfusion/ej2-charts";
-function Chart() {
-  var chart: any;
-  var intervalId: any;
-  var series1: any = [];
-  var value = 10;
-  var setTimeoutValue = 100;
+  Legend,
+  Scale,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+// import { faker } from "@faker-js/faker";
+import { getData2 } from "../Services";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-  for (var i = 0; i < 50; i++) {
-    if (Math.random() > 0.5) {
-      value += Math.random() * 2.0;
-    }
-    series1[i] = { x: i, y: value };
-  }
-  chart = chart;
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top" as const,
+    },
+    title: {
+      display: true,
+      text: "DATA display",
+    },
+  },
+  // scales: {
+  //   xAxes: {
+  //     type: "time",
+  //     ticks: {
+  //       autoSkip: true,
+  //       maxTicksLimit: 20,
+  //     },
+  //   },
+  // },
+};
 
-  function loaded(args: any) {
-    intervalId = setTimeout(() => {
-      if (chart === null) {
-        clearInterval(intervalId);
-      } else {
-        if (Math.random() > 0.5) {
-          value += Math.random() * 2.0;
-        }
-        i++;
-        series1.push({ x: i, y: value });
-        series1.shift();
-        args.chart.series[0].dataSource = series1;
-      }
-    }, setTimeoutValue);
-  }
+var c: number = 0;
+const timeline: any = [];
+const x: any = [];
+const y: any = [];
+const z: any = [];
 
+function MyChart({ chartData }: any) {
+  // const [response, setData] = useState([]);
+  // const [ready, setDataready] = useState(false);
+  // useEffect(() => {
+  //   const getDataChart = async () => {
+  //     const res = await getData2(); //getData2 là lấy data thôi
+  //     setData(res.data);
+  //     // console.log(res.data);
+  //   };
+  //   getDataChart();
+
+  //   // const dataset: any = response?.map((item: any) => {
+  //   //   timeline.push(item.time);
+  //   //   // x.push(item.x);
+  //   //   y.push(item.y);
+  //   //   z.push(item.z);
+  //   //   return {
+  //   //     timeline,
+  //   //     x: item.x
+  //   //     y,
+  //   //     z,
+  //   //   };
+  //   // });
+  //   if (c < 1) c = c + 1;
+  // }, []);
+  // // console.log(response);
+  // useEffect(() => {
+  //   const dataset = response?.map((item) => {
+  //     timeline.push(item.time);
+  //     x.push(item.x);
+  //     y.push(item.y);
+  //     z.push(item.z);
+  //     return {
+  //       timeline,
+  //       x,
+  //       y,
+  //       z,
+  //     };
+  //   });
+  //   // dataset;
+  // }, [c]);
+  // console.log(x);
+  // console.log(typeof x);
+  // console.log(timeline.slice(0, 5));
+  // const labels: any = timeline.slice(0, 5);
+  // const chartdata = {
+  //   labels,
+  //   datasets: [
+  //     {
+  //       label: "X",
+  //       data: x.slice(0, 5),
+  //       borderColor: "rgb(255, 99, 132)",
+  //       backgroundColor: "rgba(255, 99, 132, 0.5)",
+  //     },
+  //     {
+  //       label: "Y",
+  //       data: y.slice(0, 5),
+  //       borderColor: "rgb(53, 162, 235)",
+  //       backgroundColor: "rgba(53, 162, 235, 0.5)",
+  //     },
+  //     {
+  //       label: "Z",
+  //       data: z.slice(0, 5),
+  //       borderColor: "rgb(120, 150, 190)",
+  //       backgroundColor: "rgba(154, 130, 183, 0.5)",
+  //     },
+  //   ],
+  // };
+  // if (timeline.length) setDataready(true);
+  // console.log(chartdata.data);
   return (
-    <ChartComponent id="charts" loaded={loaded.bind(this)}>
-      <Inject services={[LineSeries]} />
-      <SeriesCollectionDirective>
-        <SeriesDirective
-          dataSource={series1}
-          xName="x"
-          yName="y"
-          type="Line"
-        ></SeriesDirective>
-      </SeriesCollectionDirective>
-    </ChartComponent>
+    <div className="chart-container">
+      <h2 style={{ textAlign: "center" }}>Line Chart</h2>
+      <Line data={chartData} options={options} />
+    </div>
   );
 }
-export default Chart;
-ReactDOM.render(<Chart />, document.getElementById("charts"));
-// const Chart = ({ data, type }: { data: any; type?: string }) => {
-//   console.log("data", data);
 
-//   return <>chart</>;
-// };
-
-// export default Chart;
+export default MyChart;
