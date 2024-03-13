@@ -1,8 +1,11 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "homepage": "https://finalproject.github.io/my-app",
   "private": true,
   "scripts": {
+    "predeploy": "npm run build",
+   "deploy": "gh-pages -d build",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -30,6 +33,7 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
+    "gh-pages": "^6.1.1",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
