@@ -11,10 +11,9 @@ export default function MainLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  alert("Logged in");
   return (
     <main className=" min-h-screen flex-col items-center justify-between">
-      <Header />
-
       <div className="grid grid-cols-4 gap-4">
         <div className="flex col-span-1">
           <Sidebar />

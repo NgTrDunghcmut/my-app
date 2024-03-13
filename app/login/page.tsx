@@ -1,27 +1,14 @@
 "use client";
-import { useState } from "react";
-import { UseFormRegister, useForm } from "react-hook-form";
-import { login } from "../Services";
+import { useContext, useState } from "react";
+// import { UseFormRegister, useForm } from "react-hook-form";
+// import { login } from "../Services";
+import AuthContext from "../components/AuthProvider";
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  let { loginUser } = useContext<any>(AuthContext);
 
-  async function addUser(user: any) {
-    console.log("user", user);
-    try {
-      const res = await login(user);
-      console.log("RES", res);
-    } catch (error: any) {
-      console.log("error", error?.message);
-    }
-  }
   return (
     <>
-      <form onSubmit={handleSubmit(addUser)}>
+      <form onSubmit={loginUser}>
         <section className="h-screen">
           <div className="h-full bg-blue-500">
             <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between p-10">
@@ -42,8 +29,8 @@ const Login = () => {
 
                 <div className="relative mb-6" data-te-input-wrapper-init>
                   <input
-                    {...register("username")}
                     type="text"
+                    name="username"
                     className="rounded-lg border-[1px] peer block min-h-[auto] w-full bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear motion-reduce:transition-none text-white placeholder-white"
                     id="exampleFormControlInput2"
                     placeholder="username"
@@ -52,10 +39,10 @@ const Login = () => {
                 <div className="relative mb-6" data-te-input-wrapper-init>
                   <input
                     type="password"
+                    name="password"
                     className="rounded-lg border-[1px] peer block min-h-[auto] w-full bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear motion-reduce:transition-none text-white placeholder-white"
                     id="exampleFormControlInput22"
                     placeholder="Password"
-                    {...register("password")}
                   />
                 </div>
 
