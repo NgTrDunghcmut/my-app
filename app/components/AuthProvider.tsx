@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }: any) => {
     const storedTokens = localStorage.getItem("authTokens");
     return storedTokens ? jwtDecode(storedTokens) : null;
   });
-  let [authTokens, setAuthTokens] = useState<string | null>(() => {
+  let [authTokens, setAuthTokens] = useState<any>(() => {
     const storedTokens = localStorage.getItem("authTokens");
     return storedTokens ? JSON.parse(storedTokens) : null;
   });
