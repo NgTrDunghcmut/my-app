@@ -22,17 +22,12 @@ export function getData(response:any) {
 }
 
 export const getData2 = async()=>{
-    const res3 = axios.get('http://192.168.2.10:8000/api/chartdata')
+    const res3 = axios.get('http://192.168.1.109:8000/api/chartdata')
     return res3
 }
 
 export const downloadcsv = async () =>{
-    const res4 = axios.get('http://192.168.2.10:8000/api/downloadcsv')
+    const res4 = axios.get('http://192.168.1.109:8000/api/downloadcsv')
     console.log(res4)
     return res4
-}
-
-export const getlistdevice = async () => {
-    const res5 = axios.get('http://192.168.2.10:8000/list')
-    return res5
 }

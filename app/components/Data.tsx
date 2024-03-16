@@ -19,7 +19,7 @@ const GetChartData = () => {
   }, []);
   // console.log(response);
   useEffect(() => {
-    const dataset = response?.map((item: any) => {
+    const dataset = response?.map((item) => {
       timeline.push(item.time);
       x.push(item.x);
       y.push(item.y);

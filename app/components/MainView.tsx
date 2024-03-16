@@ -33,7 +33,7 @@ const MainView = () => {
   const [response, setData] = useState([]);
   useEffect(() => {
     const getDataChart = async () => {
-      const res = await getData2();
+      const res = await getData2(); //getData2 là lấy data thôi
       setData(res.data);
       console.log(res.data);
     };
@@ -42,7 +42,7 @@ const MainView = () => {
   }, []);
   // console.log(response);
   useEffect(() => {
-    const dataset = response?.map((item: any) => {
+    const dataset = response?.map((item) => {
       timeline.push(item.time);
       x.push(item.x);
       y.push(item.y);
