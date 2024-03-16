@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import Siderbar2 from "./Siderbar2";
 
 const Header = () => {
   return (
@@ -26,6 +27,7 @@ const Header = () => {
             alt="logo"
           />
         </div>
+        <Siderbar2 />
         <h3>Tri Dung</h3>
       </div>
     </div>

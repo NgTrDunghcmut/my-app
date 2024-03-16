@@ -33,7 +33,7 @@ const MainView = () => {
   const [response, setData] = useState([]);
   useEffect(() => {
     const getDataChart = async () => {
-      const res = await getData2(); //getData2 là lấy data thôi
+      const res = await getData2();
       setData(res.data);
       console.log(res.data);
     };
