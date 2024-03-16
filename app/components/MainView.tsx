@@ -42,7 +42,7 @@ const MainView = () => {
   }, []);
   // console.log(response);
   useEffect(() => {
-    const dataset = response?.map((item) => {
+    const dataset = response?.map((item: any) => {
       timeline.push(item.time);
       x.push(item.x);
       y.push(item.y);
