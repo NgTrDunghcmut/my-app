@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
   Scale,
+  Animation,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 // import { faker } from "@faker-js/faker";
@@ -27,23 +28,31 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: "top" as const,
+      position: "top",
     },
     title: {
       display: true,
       text: "DATA display",
     },
   },
-  // scales: {
-  //   xAxes: {
-  //     type: "time",
-  //     ticks: {
-  //       autoSkip: true,
-  //       maxTicksLimit: 20,
-  //     },
-  //   },
-  // },
+  animation: false, // Moved animation option to the correct position
+  showLine: true, // This seems to be a global option, not under plugins
+  datasets: {
+    line: {
+      pointRadius: 0, // disable for all `'line'` datasets
+    },
+  },
 };
+
+// scales: {
+//   xAxes: {
+//     type: "time",
+//     ticks: {
+//       autoSkip: true,
+//       maxTicksLimit: 20,
+//     },
+//   },
+// },
 
 var c: number = 0;
 const timeline: any = [];

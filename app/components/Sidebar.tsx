@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
+import DeviceSwitch from "./StartStop";
 
 const devices: any = {
   type1: [

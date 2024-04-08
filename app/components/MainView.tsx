@@ -7,6 +7,8 @@ import Downloadbutton from "./DownloadButton";
 import MyChart from "./Chart";
 import GetChartData from "./Data";
 import { getData2 } from "../Services";
+// import SwitchButton from "./ToggleSwitch";
+import DeviceSwitch from "./StartStop";
 const tabs = [
   {
     title: "Training histogram",
@@ -54,8 +56,9 @@ const MainView = () => {
         z,
       };
     });
+
     // dataset;
-  }, [c]);
+  });
   // consoe.log(x);
   const labels = timeline;
   const chartdata = {
@@ -104,10 +107,13 @@ const MainView = () => {
         </ul>
       </div>
       {active === 0 && <>{/* <Chart /> */}</>}
-      {active === 1 && <>show info</>}
+      {active === 1 && <>ìno</>}
       {active === 2 && (
         <>
-          <Downloadbutton />
+          <div className="flex justify-between">
+            <DeviceSwitch />
+            <Downloadbutton />
+          </div>
           <MyChart chartData={chartdata} />
         </>
       )}
