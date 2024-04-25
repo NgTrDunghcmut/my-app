@@ -11,29 +11,30 @@ export const login = async (data:any) =>{
     return res;
 }
 
-export function getData(response:any) {
-    const cdata: any = response?.data.map((item: any) => ({
-        time: item.time,
-        x: item.x,
-        y: item.y,
-        z: item.z,
-      }));
-    return cdata;
+export const getinfo = async(device_id:any) => {
+    const res2 = axios.post('http://192.168.2.12:8000/list',{device_id})
+    return res2;
 }
 
-export const getData2 = async()=>{
-    const res3 = axios.get('http://10.68.0.157:8000/api/chartdata')
+export const getData2 = async(device_id:any, date:any)=>{
+    const res3 = axios.post('http://192.168.2.12:8000/api/chartdata',{device_id: device_id, date: date})
     return res3
 }
 
 export const downloadcsv = async () =>{
-    const res4 = axios.get('http://10.68.0.157:8000/api/downloadcsv')
+    const res4 = axios.get('http://192.168.2.12:8000/api/downloadcsv')
     console.log(res4)
     return res4
 }
 export const getlistdevice = async () => {
-    const res5 = axios.get('http://10.68.0.157:8000/list')
+    const res5 = axios.get('http://192.168.2.12:8000/list')
     return res5
+}
+
+export const activateML =async (x:any) => {
+    const res6 = axios.post('http://192.168.2.12:8000/mlactivate', {active:x})
+    console.log(res6)
+    return res6
 }
 
 export const deviceswitch = async(x:any) =>{

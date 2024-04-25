@@ -24,3 +24,19 @@ body {
     text-wrap: balance;
   }
 }
+
+
+@font-face {
+    font-family: 'Tech';
+    src: url('./font/ShareTech-Regular.ttf') format('truetype');
+  }
+  
+  .container {
+    font-family: 'ShareTech-Regular', sans-serif;
+  }
+  
+  .heading {
+    font-family: 'ShareTech-Regular', sans-serif;
+    font-size: 24px;
+  }
+  
