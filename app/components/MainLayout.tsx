@@ -1,19 +1,9 @@
 "use client";
 // import Toolbars from "./components/toolbar";
-import Image from "next/image";
-import Link from "next/link";
+
 import * as React from "react";
 import Header from "./Header";
-import Sidebar from "./Sidebar";
-import {
-  BrowserRouter,
-  Route,
-  BrowserRouter as Router,
-  Routes,
-  useRoutes,
-} from "react-router-dom";
 import Sidebar2 from "./Sidebar2";
-import MainView from "./MainView";
 // import Sidebar from "./Sidebar";
 export default function MainLayout({
   children,

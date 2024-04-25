@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,9 +14,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 // import { faker } from "@faker-js/faker";
-import { getData2 } from "../Services";
-import { DatePicker } from "antd";
-import { color } from "chart.js/helpers";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,

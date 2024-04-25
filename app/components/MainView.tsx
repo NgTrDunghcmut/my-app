@@ -1,12 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import { twMerge } from "tailwind-merge";
-import Chart from "./Chart";
 import Downloadbutton from "./DownloadButton";
 import MyChart from "./Chart";
-import GetChartData from "./Data";
 import { getData2 } from "../Services";
 // import SwitchButton from "./ToggleSwitch";
 import DeviceSwitch from "./StartStop";
@@ -14,28 +11,12 @@ import DeviceSwitch from "./StartStop";
 import React from "react";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import { DatePicker, Space } from "antd";
 import Datepicker from "./Datepicker";
 import Popup from "./Popup";
 import MLActivate from "./MLactivate";
 import Table from "./Table";
 
 dayjs.extend(customParseFormat);
-// const dateFormat = "YYYY-MM-DD";
-// const Datepicker2 = ({ onDataChange }: any) => {
-//   const handleDateChange = (dateString: any) => {
-//     onDataChange(dateString);
-//   };
-//   return (
-//     <Space direction="vertical" size={2}>
-//       <DatePicker
-//         defaultValue={dayjs(dayjs(), dateFormat)}
-//         format={dateFormat}
-//         onChange={handleDateChange}
-//       />
-//     </Space>
-//   );
-// };
 
 const tabs = [
   {

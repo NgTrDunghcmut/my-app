@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Siderbar2 from "./Sidebar2";
-import { Link } from "react-router-dom";
 import LogoWithLink from "./Homewithlogo";
 
 const Header = () => {
@@ -24,7 +22,6 @@ const Header = () => {
             alt="logo"
           />
         </div>
-        {/* <Siderbar2 /> */}
         <h3 style={{ fontFamily: "Tech", fontSize: "25px" }}>Tri Dung</h3>
       </div>
     </div>

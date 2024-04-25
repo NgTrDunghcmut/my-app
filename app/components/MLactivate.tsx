@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { activateML } from "../Services";
 // import SwitchButton from "./ToggleSwitch";
 import React from "react";

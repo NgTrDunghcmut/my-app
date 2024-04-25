@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { getlistdevice } from "../Services";
-import MainView from "./MainView";
+
 import { twMerge } from "tailwind-merge";
 
 const Sidebar2 = () => {
