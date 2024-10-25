@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { downloadcsv } from "@/app/Services";
+import { downloadcsv, traindevice } from "@/app/Services";
 import { AxiosResponse } from "axios";
+import LoadingSpinner from "./Spiner";
 
-const Downloadbutton = ({ device_id, date }: any) => {
-  const handleDownload = async () => {
+const Trainbutton = ({ device_id }: any) => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const handleTrain = async () => {
     try {
-      const res = await downloadcsv(device_id, date);
-      const blob = new Blob([res.data], { type: "text/csv" });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      const filename = `Data_${device_id}_${date}.csv`;
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
+      setLoading(true);
+      const res = await traindevice(device_id);
     } catch (error) {
       console.error("Error downloading CSV:", error);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -33,12 +28,13 @@ const Downloadbutton = ({ device_id, date }: any) => {
         }}
         className="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-Black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-blue focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] "
       >
-        <a onClick={handleDownload} style={{ cursor: "pointer" }}>
-          Download CSV
+        <a onClick={handleTrain} style={{ cursor: "pointer" }}>
+          Train data with available data
         </a>
+        {loading ? <LoadingSpinner /> : null}
       </button>
     </>
   );
 };
 
-export default Downloadbutton;
+export default Trainbutton;

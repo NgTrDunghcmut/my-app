@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Chart as ChartJS,
+  BarElement,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -13,9 +14,13 @@ import {
   scales,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import zoomPlugin from "chartjs-plugin-zoom";
+
+ChartJS.register(zoomPlugin);
 // import { faker } from "@faker-js/faker";
 
 ChartJS.register(
+  BarElement,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -27,10 +32,10 @@ ChartJS.register(
 
 export const options: any = {
   responsive: true,
-
+  spanGaps: true,
   plugins: {
     legend: {
-      position: "top",
+      display: false,
     },
     title: {
       display: true,
@@ -40,24 +45,25 @@ export const options: any = {
         size: 28,
         weight: "lighter",
       },
-      color: "blue",
+      color: "black",
     },
+
     zoom: {
-      pan: {
-        enabled: true,
-        mode: "x",
-      },
-      limits: {
-        x: { min: 0, max: 50 },
-      },
+      pan: { enabled: true, mode: "xy", threshold: 20 },
       zoom: {
         wheel: {
           enabled: true,
-          speed: 0.1,
+          modifierKey: "ctrl",
         },
+        pinch: {
+          enabled: true,
+        },
+        mode: "xy",
+        scaleMode: "xy",
       },
     },
   },
+
   animation: false, // Moved animation option to the correct position
   showLine: true, // This seems to be a global option, not under plugins
   datasets: {
@@ -66,12 +72,6 @@ export const options: any = {
     },
   },
 };
-
-var c: number = 0;
-const timeline: any = [];
-const x: any = [];
-const y: any = [];
-const z: any = [];
 
 function MyChart({ chartData }: any) {
   return (

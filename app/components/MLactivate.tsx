@@ -3,14 +3,14 @@ import { activateML } from "../Services";
 // import SwitchButton from "./ToggleSwitch";
 import React from "react";
 import { CheckCircleFilled } from "@ant-design/icons";
-const MLActivate = () => {
+const MLActivate = ({ device_id }: any) => {
   const [highVisible, setIsVisible] = useState(false);
   const [state, flip] = useState<any>(1);
   const handleswitch = async (e: any) => {
     console.log(state);
     const newState = 1 - state;
     flip(newState);
-    const response = await activateML(state.toString());
+    const response = await activateML(state.toString(), device_id);
   };
   const toggleVisibility = () => {
     setIsVisible(!highVisible);

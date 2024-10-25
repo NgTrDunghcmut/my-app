@@ -8,12 +8,13 @@ export default function Home() {
   return (
     <div
       style={{
-        background: `url("/images/Batman-Logo-Wallpaper.jpg")`,
-        backgroundSize: "auto",
-        backgroundPosition: "center",
+        background: `url("/images/background.png")`,
+        backgroundSize: "86%",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "right",
       }}
     >
-      <MainLayout>Homepage</MainLayout>
+      <MainLayout> </MainLayout>
     </div>
   );
 }
